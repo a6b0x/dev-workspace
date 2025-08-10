@@ -1,0 +1,55 @@
+# version: '3.8'
+
+#volumes:
+#  influxdb3_data:
+
+networks:
+  default:
+    driver: bridge
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ..:/workspaces:cached
+      - ../../code_rs_back/vscode:/home/vscode
+      - ../../code_rs_back/cargo:/usr/local/cargo/registry
+    command: sleep infinity
+    env_file:
+      - .env
+    # network_mode: service:tsdb
+
+#   tsdb:
+#     image: influxdb:3-core
+#     restart: unless-stopped
+#     volumes:
+#       - ../../influxdb3:/var/lib/influxdb3
+# #     - influxdb3_data:/var/lib/influxdb3
+#     command: influxdb3 serve --node-id host01 --object-store file --data-dir /var/lib/influxdb3
+#     ports:
+#       - 8182:8181
+# #    env_file:
+# #      - .env
+
+  # tsdb-ui:
+  #   image: influxdata/influxdb3-ui:1.0.0
+  #   restart: unless-stopped
+  #   volumes:
+  #     - ../../influxdb3_ui/cofig:/app-root/config
+  #     - ../../influxdb3_ui/_master_app:/app-root/_master_app
+  #     - ../../influxdb3_ui/db:/db
+  #   ports:
+  #     - "8899:80"
+  #     - "8800:8888"
+  #   command: --mode=admin
+
+  # tsdb-dashboard:
+  #   image: grafana/grafana
+  #   restart: unless-stopped
+  #   volumes:
+  #     - ../../grafana:/var/lib/grafana
+  #   ports:
+  #     - "3000:3000"
+

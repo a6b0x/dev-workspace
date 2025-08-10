@@ -1,0 +1,30 @@
+{
+	"name": "Rust",
+	"dockerComposeFile": [
+		"docker-compose.yml",
+		"../chain-pipe/docker/fluvio/docker-compose.yml"
+	],
+	"service": "app",
+	// "forwardPorts": [
+	// 	8888,
+	// 	3000
+	// ],
+	"workspaceFolder": "/workspaces",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"rust-lang.rust-analyzer",
+				"mechatroner.rainbow-csv",
+				"MarsCode.marscode-extension",
+				"tamasfe.even-better-toml",
+				"JuanBlanco.solidity",
+				"google.geminicodeassist",
+				"mirone.milkdown"
+			]
+		}
+	},
+	"features": {
+		"./gemini": {},
+		"./net-tool": {}
+	}
+}

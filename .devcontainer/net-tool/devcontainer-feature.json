@@ -1,0 +1,6 @@
+{
+  "id": "nettool",
+  "version": "1.0.0",
+  "name": "Network Toolbox",
+  "description": "Installs common network utilities (ping, dig, traceroute, etc.)"
+}
